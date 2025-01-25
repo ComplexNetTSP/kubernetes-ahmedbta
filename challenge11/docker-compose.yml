@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - flask-mongo-net
+
+  flask_with_db:
+    image: ilefrjiba/flask-app:v2
+    container_name: flask_with_db
+    ports:
+      - "5000:5000"
+    networks:
+      - flask-mongo-net
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/
+
+  flask_without_db:
+    image: ilefrjiba/flask-app:v1
+    container_name: flask_without_db
+    ports:
+      - "5001:5000"
+    networks:
+      - flask-mongo-net
+
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+    - flask_with_db
+    - flask_without_db
+    networks:
+      - flask-mongo-net
+    
+networks:
+  flask-mongo-net:
