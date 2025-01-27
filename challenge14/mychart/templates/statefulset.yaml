@@ -38,6 +38,7 @@ metadata:
   name: mongodb
   namespace: {{ .Values.namespace }}
 spec:
+  clusterIP: None
   selector:
     app: mongodb
   ports:
