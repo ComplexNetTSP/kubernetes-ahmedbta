@@ -1,0 +1,34 @@
+namespace: abentalebali
+
+replicaCount: 3
+
+image:
+  webdb: "ahmedbta/flask_app_with_db:ch123"
+  webnodb: "ahmedbta/flask_app_no_db:ch13"
+  mongodb: "mongo:latest"
+
+ports:
+  webnodb: 5000
+  webdb: 5000
+  mongodb: 27017
+
+hostnames:
+  ingressHost: net4255.luxbulb.org
+  webnodb: webnodb
+  webdb: webdb
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "100Mi"
+  limits:
+    cpu: "500m"
+    memory: "200Mi"
+
+mongodb:
+  image: mongo:latest
+  username: admin
+  password: admin
+  dbName: flask_app_db
+  collectionName: requests
+  storage: "300Mi"
