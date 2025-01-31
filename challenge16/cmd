@@ -1,0 +1,8 @@
+kubectl apply -f mongodb-service.yaml -n abentalebali
+kubectl apply -f mongodb-statefulset.yaml -n abentalebali
+
+
+get pods
+
+
+kubectl exec -it mongodb-0 -n abentalebali -- /bin/bash
