@@ -1,0 +1,7 @@
+Explain why you have chosen a particular type of probe for a particular application.
+  
+What is your liveness probing strategy for the web servers?
+--> We use an HTTP liveness probe because Flask exposes an HTTP endpoint, allowing Kubernetes to check if the application is responsive.  
+
+What is your liveness probing strategy for the database?
+--> We use a TCP liveness probe because MongoDB does not expose an HTTP endpoint, making HTTP probes incompatible, while TCP ensures the database is still accepting connections on port 27017.
