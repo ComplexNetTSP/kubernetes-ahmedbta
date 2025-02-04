@@ -1,1 +1,18 @@
-export KUBECONFIG=$HOME/.kube/net4255.yamlhelm uninstall mychart -n abentalebalihelm package .helm install mychart ./mychart-0.1.0.tgz -n abentalebalikubectl get pods -n abentalebaliSkubectl get hpa -n abentalebalitest:kubectl exec -it -n abentalebaliS webdb-..................  -- shwhile true; do dd if=/dev/zero of=/dev/null bs=1M count=1000; done
+export KUBECONFIG=$HOME/.kube/net4255.yaml
+
+helm uninstall mychart -n abentalebali
+
+helm package .
+
+helm install mychart ./mychart-0.1.0.tgz -n abentalebali
+
+kubectl get pods -n abentalebali
+
+kubectl get hpa -n abentalebali
+
+
+test:
+kubectl exec -it -n abentalebaliS <webdb-pod-id>  -- sh
+
+while true; do dd if=/dev/zero of=/dev/null bs=1M count=1000; done
+
