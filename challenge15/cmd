@@ -1,1 +1,21 @@
-export KUBECONFIG=$HOME/.kube/net4255.yamlhelm uninstall mychart -n abentalebalihelm package .very important : kubectl delete pvc mongodb-data-mongodb-0 -n abentalebalihelm install mychart ./mychart-0.1.0.tgz -n abentalebalikubectl get pods -n abentalebalikubectl get networkpolicy -n abentalebalitest:kubectl exec -it -n abentalebali webdb-..................  -- /bin/shnc -zv mongodb-0.mongodb.abentalebali.svc.cluster.local 27017
+export KUBECONFIG=$HOME/.kube/net4255.yaml
+
+helm uninstall mychart -n abentalebali
+
+helm package .
+
+helm install mychart ./mychart-0.1.0.tgz -n abentalebali
+
+kubectl get pods -n abentalebali
+
+kubectl get networkpolicy -n abentalebali
+
+
+test:
+kubectl exec -it -n abentalebali <webdbpod_id>   -- /bin/sh
+nc -zv mongodb-0.mongodb.abentalebali.svc.cluster.local 27017
+
+same thing for the test pod i created..
+
+
+
