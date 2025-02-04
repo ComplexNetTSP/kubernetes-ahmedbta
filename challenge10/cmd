@@ -1,0 +1,6 @@
+kubectl apply -f ingress.yaml
+kubectl get ingress -n abentalebali
+
+curl http://webdb.abentalebali.net4255.luxbulb.org
+curl http://webnodb.abentalebali.net4255.luxbulb.org
+
