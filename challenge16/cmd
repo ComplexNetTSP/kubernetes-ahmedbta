@@ -1,8 +1,21 @@
 kubectl apply -f mongodb-service.yaml -n abentalebali
 kubectl apply -f mongodb-statefulset.yaml -n abentalebali
 
+kubectl get pods -n abentalebali
 
-get pods
+kubectl exec -it mongodb-0 -n abentalebali -- mongosh
 
 
-kubectl exec -it mongodb-0 -n abentalebali -- /bin/bash
+rs.initiate({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongodb-0.mongodb.abentalebali.svc.cluster.local:27017" },
+    { _id: 1, host: "mongodb-1.mongodb.abentalebali.svc.cluster.local:27017" },
+    { _id: 2, host: "mongodb-2.mongodb.abentalebali.svc.cluster.local:27017" }
+  ]
+})
+
+
+
+rs.status()
+
