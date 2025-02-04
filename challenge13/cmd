@@ -1,1 +1,15 @@
-helm package .helm install mychart ./mychart-0.1.0.tgz -n abentalebalikubectl get pods -n abentalebali
+docker build -t ahmedbta/flask_app_with_db:ch13 .
+docker push ahmedbta/flask_app_with_db:ch13
+
+docker build -t ahmedbta/flask_app_no_db:ch13 .
+docker push ahmedbta/flask_app_no_db:ch13
+
+helm package .
+
+helm install mychart ./mychart-0.1.0.tgz -n abentalebali
+
+kubectl rollout status deployment/webdb -n abentalebali
+kubectl rollout status deployment/webnodb -n abentalebali
+
+kubectl get pods -n abentalebali
+
